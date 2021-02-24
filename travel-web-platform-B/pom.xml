@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>travel-parent</artifactId>
+    <groupId>com.heyu.travel</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>travel-web-platform-B</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>travel-web-platform-B Maven Webapp</name>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>com.heyu.travel</groupId>
+      <artifactId>travel-service</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
+    <!--servlet 容器依赖-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- for Redisson 3.x的 spring-session-->
+    <dependency>
+      <groupId>org.springframework.session</groupId>
+      <artifactId>spring-session-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.session</groupId>
+      <artifactId>spring-session-data-redis</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <finalName>travel-web-platform-B</finalName>
+    <plugins>
+      <!-- 声明打包时，不需要web.xml -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+      <!-- tomcat7插件,命令： mvn tomcat7:run -DskipTests -->
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <configuration>
+          <uriEncoding>utf-8</uriEncoding>
+          <port>8080</port>
+          <path>/platform</path>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+
+</project>
