@@ -50,6 +50,7 @@ public class PrimaryKeyInterceptor implements Interceptor {
             SqlCommandType sqlCommandType = ms.getSqlCommandType();
             //只处理插入操作
             if(!EmptyUtil.isNullOrEmpty(sqlCommandType) && sqlCommandType == SqlCommandType.INSERT) {
+                //Todo: 批量操作实现
                 if(args[1] instanceof Map){
                     List list = (List) (( Map) args[1]).get("list");
                     for (Object obj : list) {
