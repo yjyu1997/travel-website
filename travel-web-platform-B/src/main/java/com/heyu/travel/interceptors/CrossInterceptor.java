@@ -25,7 +25,6 @@ public class CrossInterceptor implements HandlerInterceptor {
         response.setHeader("access-control-allow-credentials", "true");
         // 指定头部跨域传递accessToken
         response.setHeader("Access-Control-Allow-Headers", "Content-Type,"+ Constant.ACCESS_TOKEN + ",checkCode");
-        System.out.println("我是dev分支制造的代码");
         return true;
     }
 }
